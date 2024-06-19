@@ -1,5 +1,5 @@
 import streamlit as st
-from utils import set_background, extract_text_from_pdf, extract_contact_links, text_summary, plot_wordcloud
+from utils import set_background, extract_text_from_pdf, extract_contact_links, text_summary_api, plot_wordcloud
 
 st.set_page_config(page_title = "Ian's Resume Summarizer")
 # set_background('./streamlit_data/background.jpg')
@@ -38,7 +38,7 @@ with st.sidebar:
             contact_info = extract_contact_links(text)
             
             if show_summary:
-                session_state.extracted_data['summary'] = text_summary(text)
+                session_state.extracted_data['summary'] = text_summary_api(text)
             if show_contact:
                 session_state.extracted_data['phone_numbers'] = '\n'.join(contact_info['phone'])
             if show_email:
